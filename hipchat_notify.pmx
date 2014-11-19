@@ -1,0 +1,31 @@
+---
+name: HipChat Notify
+description: 'Container that sends a hipchat message set in environment variables. '
+keywords: utility
+type: Default
+documentation: |2
+
+  Container invokes: https://www.hipchat.com/docs/apiv2/method/send_room_notification
+
+  Env Variables in the template below are blank and need to be set:
+
+  HC_MESSAGE= Message you want to to be sent to hipchat room
+  HC_TOKEN_ID=Personal access token id or Room Message ID from HipChat account
+  HC_ROOM_ID=Room Name or ID
+  HC_COLOR=Color of Notification valid values: yellow, green, red, purple, gray, random.
+
+  Alternatively can be ran using Docker RUN: docker run -e HC_MESSAGE="Test from Docker Container" -e HC_TOKEN_ID=<token_id> -e HC_ROOM_ID=<room_id> -e HC_COLOR=purple rfjimen/hipchatnotify
+images:
+- name: HipChat_Notify
+  source: rfjimen/hipchatnotify:latest
+  category: HipChat Notify
+  type: Default
+  environment:
+  - variable: HC_MESSAGE
+    value: ''
+  - variable: HC_TOKEN_ID
+    value: ''
+  - variable: HC_ROOM_ID
+    value: ''
+  - variable: HC_COLOR
+    value: ''
