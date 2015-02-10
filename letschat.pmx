@@ -1,0 +1,23 @@
+---
+name: LetsChat
+description: LetsChat with MongoDB - https://github.com/sdelements/lets-chat/wiki/Docker
+keywords: letschat mongodb
+type: Default
+documentation: |-
+  [Lets-Chat](http://sdelements.github.io/lets-chat/)
+
+  [Env Variables](https://github.com/sdelements/lets-chat/wiki/Environment-variables)
+images:
+- name: db
+  source: mongo:3.0
+  type: Default
+- name: lets-chat
+  source: rfjimen/lets-chat:latest
+  type: Default
+  ports:
+  - host_port: '5000'
+    container_port: '5000'
+    proto: TCP
+  links:
+  - service: db
+    alias: db
