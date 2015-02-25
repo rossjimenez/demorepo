@@ -1,0 +1,27 @@
+---
+name: letschat-do
+description: ''
+keywords: ''
+type: Default
+documentation: |-
+  [Lets-Chat](http://sdelements.github.io/lets-chat/)
+
+  [Env Variables](https://github.com/sdelements/lets-chat/wiki/Environment-variables)
+images:
+- name: db
+  source: mongo:3.0
+  type: Default
+  ports:
+  - host_port: '27017'
+    container_port: '27017'
+    proto: TCP
+- name: lets-chat
+  source: rfjimen/lets-chat:latest
+  type: Default
+  ports:
+  - host_port: '80'
+    container_port: '5000'
+    proto: TCP
+  links:
+  - service: db
+    alias: db
